@@ -2,51 +2,74 @@
 <html>
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Feliz dias dos Namorados</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <meta charset="UTF-8">
+  <title>Feliz dias dos Namorados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <style>
+    /* Estilo personalizado para os botões */
+    .button-style {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      outline: none;
+    }
+  </style>
 </head>
 
-
 <body>
-    <div class="happy-valentines">
-        <div class="valentines-day-card">
-          <div class="nuvens"></div>
-          <div class="coracoes">
-            <div class="coracaoUm">
-              <div class="lado-esquerdo"></div>
-              <div class="lado-direito"></div>
-            </div>
-            <div class="coracaoDois">
-              <div class="lado-esquerdo"></div>
-              <div class="lado-direito"></div>
-            </div>
-                <div class="coracaoTres">
-              <div class="lado-esquerdo"></div>
-              <div class="lado-direito"></div>
-            </div>
-             <div class="coracaoQuatro">
-              <div class="lado-esquerdo"></div>
-              <div class="lado-direito"></div>
-            </div>
-             <div class="coracaoCinco">
-             <div class="lado-esquerdo"></div>
-              <div class="lado-direito"></div>
-            </div>
-          </div>
-          <div class="text"><span>Feliz Dia dos</br> Namorados Meu AMOR</div>
+  <div class="happy-valentines">
+    <div class="valentines-day-card">
+      <div class="nuvens"></div>
+      <div class="coracoes">
+        <div class="coracaoUm">
+          <div class="lado-esquerdo"></div>
+          <div class="lado-direito"></div>
         </div>
-        <p class="hover">- Clique na tela bolinha -</p>
+        <div class="coracaoDois">
+          <div class="lado-esquerdo"></div>
+          <div class="lado-direito"></div>
         </div>
+        <div class="coracaoTres">
+          <div class="lado-esquerdo"></div>
+          <div class="lado-direito"></div>
+        </div>
+        <div class="coracaoQuatro">
+          <div class="lado-esquerdo"></div>
+          <div class="lado-direito"></div>
+        </div>
+        <div class="coracaoCinco">
+          <div class="lado-esquerdo"></div>
+          <div class="lado-direito"></div>
+        </div>
+      </div>
+      <div class="text"><span>Feliz Dia dos</br> Namorados Meu AMOR</div>
+    </div>
+    <p class="hover">- Clique na tela bolinha -</p>
+  </div>
 
-  <audio id="audio-element" src="musicaa.mp3" loop></audio>
-  
-  <button id="play-button">Play</button>
-  <button id="pause-button">Pause</button>
+  <audio id="audio-element" src="musicaa.mp3" autoplay loop></audio>
+
+  <button id="play-button" class="button-style">
+    <img src="icone-play.png" alt="Play">
+  </button>
+  <button id="pause-button" class="button-style">
+    <img src="icone-pause.png" alt="Pause">
+  </button>
 
   <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var audioContext = new(window.AudioContext || window.webkitAudioContext)();
+      var audioElement = document.createElement('audio');
+      audioElement.src = 'musicaa.mp3';
+      audioElement.autoplay = true;
+      audioElement.loop = true;
+
+      var source = audioContext.createMediaElementSource(audioElement);
+      source.connect(audioContext.destination);
+    });
+
     var audioElement = document.getElementById("audio-element");
     var playButton = document.getElementById("play-button");
     var pauseButton = document.getElementById("pause-button");
@@ -60,9 +83,21 @@
     });
 
     window.addEventListener("DOMContentLoaded", function() {
-      audioElement.play();
+      // Ocultar o botão de pause inicialmente
+      pauseButton.style.display = "none";
+    });
+
+    // Alternar a exibição dos botões de play e pause
+    audioElement.addEventListener("play", function() {
+      playButton.style.display = "none";
+      pauseButton.style.display = "inline-block";
+    });
+
+    audioElement.addEventListener("pause", function() {
+      playButton.style.display = "inline-block";
+      pauseButton.style.display = "none";
     });
   </script>
-
 </body>
+
 </html>
