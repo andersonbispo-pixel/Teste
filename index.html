@@ -68,6 +68,8 @@
 
       var source = audioContext.createMediaElementSource(audioElement);
       source.connect(audioContext.destination);
+
+      audioElement.play(); // Iniciar automaticamente o áudio
     });
 
     var audioElement = document.getElementById("audio-element");
