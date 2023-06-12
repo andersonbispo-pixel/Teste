@@ -3,14 +3,171 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Feliz Dia dos Namorados</title>
+  <title>Feliz Dias dos Namorados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
   <style>
     /* Estilos gerais */
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    .happy-valentines {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .valentines-day-card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: #ff7f7f;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .nuvens {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+      animation: nuvens-animacao 6s infinite linear;
+    }
+
+    @keyframes nuvens-animacao {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(240px);
+      }
+    }
+
+    .coracoes {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .coracaoUm,
+    .coracaoDois,
+    .coracaoTres,
+    .coracaoQuatro,
+    .coracaoCinco {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      transform: rotate(45deg);
+      animation: coracao-animacao 2s infinite ease-in-out;
+    }
+
+    .coracaoUm .lado-esquerdo,
+    .coracaoDois .lado-esquerdo,
+    .coracaoTres .lado-esquerdo,
+    .coracaoQuatro .lado-esquerdo,
+    .coracaoCinco .lado-esquerdo,
+    .coracaoUm .lado-direito,
+    .coracaoDois .lado-direito,
+    .coracaoTres .lado-direito,
+    .coracaoQuatro .lado-direito,
+    .coracaoCinco .lado-direito {
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 80px;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+
+    .coracaoUm .lado-esquerdo,
+    .coracaoUm .lado-direito,
+    .coracaoCinco .lado-esquerdo,
+    .coracaoCinco .lado-direito {
+      border-radius: 40px 40px 0 0;
+    }
+
+    .coracaoDois .lado-esquerdo,
+    .coracaoDois .lado-direito,
+    .coracaoQuatro .lado-esquerdo,
+    .coracaoQuatro .lado-direito {
+      border-radius: 40px 40px 0 0;
+    }
+
+    .coracaoTres .lado-esquerdo,
+    .coracaoTres .lado-direito {
+      border-radius: 0;
+    }
+
+    .coracaoUm .lado-esquerdo,
+    .coracaoDois .lado-esquerdo,
+    .coracaoTres .lado-esquerdo,
+    .coracaoQuatro .lado-esquerdo,
+    .coracaoCinco .lado-esquerdo {
+      left: 0;
+    }
+
+    .coracaoUm .lado-direito,
+    .coracaoDois .lado-direito,
+    .coracaoTres .lado-direito,
+    .coracaoQuatro .lado-direito,
+    .coracaoCinco .lado-direito {
+      right: 0;
+    }
+
+    @keyframes coracao-animacao {
+      0% {
+        transform: rotate(45deg) scale(1);
+      }
+      50% {
+        transform: rotate(45deg) scale(0.8);
+      }
+      100% {
+        transform: rotate(45deg) scale(1);
+      }
+    }
+
+    .text {
+      margin-top: 200px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hover {
+      color: white;
+      font-size: 14px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilos para dispositivos móveis */
+    @media (max-width: 768px) {
+      .valentines-day-card {
+        width: 200px;
+        height: 300px;
+      }
+
+      .text {
+        margin-top: 140px;
+        font-size: 18px;
+      }
+
+      .hover {
+        font-size: 12px;
+      }
     }
 
     /* Estilo personalizado para os botões */
@@ -20,24 +177,6 @@
       cursor: pointer;
       font-size: 16px;
       outline: none;
-    }
-
-    /* Estilos específicos para dispositivos móveis */
-    @media (max-width: 768px) {
-      .valentines-day-card {
-        margin-top: 20px;
-        text-align: center;
-      }
-      .text span {
-        font-size: 28px;
-      }
-      .hover {
-        font-size: 14px;
-      }
-      #play-button,
-      #pause-button {
-        margin-top: 10px;
-      }
     }
   </style>
 </head>
@@ -68,23 +207,19 @@
           <div class="lado-direito"></div>
         </div>
       </div>
-      <div class="text">
-        <span>Feliz Dia dos<br> Namorados Meu AMOR</span>
-      </div>
+      <div class="text"><span>Feliz Dia dos<br> Namorados Meu AMOR</div>
     </div>
     <p class="hover">- Clique na tela bolinha -</p>
   </div>
 
   <audio id="audio-element" src="musicaa.mp3" autoplay loop></audio>
 
-  <div style="text-align: center; margin-top: 20px;">
-    <button id="play-button" class="button-style">
-      <img src="icone-play.png" alt="Play">
-    </button>
-    <button id="pause-button" class="button-style">
-      <img src="icone-pause.png" alt="Pause">
-    </button>
-  </div>
+  <button id="play-button" class="button-style">
+    <img src="icone-play.png" alt="Play">
+  </button>
+  <button id="pause-button" class="button-style">
+    <img src="icone-pause.png" alt="Pause">
+  </button>
 
   <script>
     window.addEventListener('DOMContentLoaded', function() {
