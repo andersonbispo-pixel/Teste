@@ -41,10 +41,17 @@
         <p class="hover">- Clique na tela bolinha -</p>
         </div>
 
- <audio autoplay loop>
-        <source src="andersonbispo-pixel/Teste/musicaa.mp3" type="audio/mp3">
-        Desculpe, mas seu navegador não suporta o elemento de áudio.
-    </audio>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+          var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          var audioElement = document.createElement('audio');
+          audioElement.src = 'musicaa.mp3';
+          audioElement.autoplay = true;
+          audioElement.loop = true;
+          
+          var source = audioContext.createMediaElementSource(audioElement);
+          source.connect(audioContext.destination);
+        });
+    </script>
 </body>
-
 </html>
