@@ -52,46 +52,35 @@
 
   <audio id="audio-element" src="musicaa.mp3" loop></audio>
 
-  <button id="play-button" class="button-style" style="display: none;">
-    <img src="icone-play.png" alt="Play">
-  </button>
-  <button id="pause-button" class="button-style">
-    <img src="icone-pause.png" alt="Pause">
-  </button>
-
   <script>
     var audioElement = document.getElementById("audio-element");
-    var playButton = document.getElementById("play-button");
-    var pauseButton = document.getElementById("pause-button");
+    var playButton = document.createElement("button");
+    var pauseButton = document.createElement("button");
+
+    playButton.id = "play-button";
+    playButton.className = "button-style";
+    playButton.innerHTML = '<img src="icone-play.png" alt="Play">';
+
+    pauseButton.id = "pause-button";
+    pauseButton.className = "button-style";
+    pauseButton.innerHTML = '<img src="icone-pause.png" alt="Pause">';
 
     playButton.addEventListener("click", function() {
       audioElement.play();
-    });
-
-    pauseButton.addEventListener("click", function() {
-      audioElement.pause();
-    });
-
-    window.addEventListener("DOMContentLoaded", function() {
-      // Ocultar o botão de pause inicialmente
-      pauseButton.style.display = "none";
-
-      // Reproduzir áudio automaticamente após interação do usuário
-      document.addEventListener("click", function() {
-        audioElement.play();
-        document.removeEventListener("click", arguments.callee);
-      });
-    });
-
-    // Alternar a exibição dos botões de play e pause
-    audioElement.addEventListener("play", function() {
       playButton.style.display = "none";
       pauseButton.style.display = "inline-block";
     });
 
-    audioElement.addEventListener("pause", function() {
+    pauseButton.addEventListener("click", function() {
+      audioElement.pause();
       playButton.style.display = "inline-block";
       pauseButton.style.display = "none";
+    });
+
+    window.addEventListener("DOMContentLoaded", function() {
+      // Adicionar os botões de play/pause ao DOM somente após interação do usuário
+      document.body.appendChild(playButton);
+      document.body.appendChild(pauseButton);
     });
   </script>
 </body>
