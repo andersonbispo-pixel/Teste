@@ -5,8 +5,14 @@
   <meta charset="UTF-8">
   <title>Feliz dias dos Namorados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
   <style>
+    /* Estilos gerais */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
     /* Estilo personalizado para os botões */
     .button-style {
       background-color: transparent;
@@ -14,6 +20,24 @@
       cursor: pointer;
       font-size: 16px;
       outline: none;
+    }
+
+    /* Estilos específicos para dispositivos móveis */
+    @media (max-width: 768px) {
+      .valentines-day-card {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .text span {
+        font-size: 28px;
+      }
+      .hover {
+        font-size: 14px;
+      }
+      #play-button,
+      #pause-button {
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -44,7 +68,7 @@
           <div class="lado-direito"></div>
         </div>
       </div>
-      <div class="text"><span>Feliz Dia dos</br> Namorados Meu AMOR</div>
+      <div class="text"><span>Feliz Dia dos<br> Namorados Meu AMOR</span></div>
     </div>
     <p class="hover">- Clique na tela bolinha -</p>
   </div>
