@@ -83,6 +83,12 @@
       // Adicionar os botões de play/pause ao DOM somente após interação do usuário
       document.body.appendChild(playButton);
       document.body.appendChild(pauseButton);
+
+      // Iniciar o áudio automaticamente após interação do usuário
+      document.addEventListener("click", function() {
+        audioElement.play();
+        document.removeEventListener("click", arguments.callee);
+      });
     });
   </script>
 </body>
