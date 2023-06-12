@@ -41,17 +41,28 @@
         <p class="hover">- Clique na tela bolinha -</p>
         </div>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', function() {
-          var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          var audioElement = document.createElement('audio');
-          audioElement.src = 'musicaa.mp3';
-          audioElement.autoplay = true;
-          audioElement.loop = true;
-          
-          var source = audioContext.createMediaElementSource(audioElement);
-          source.connect(audioContext.destination);
-        });
-    </script>
+  <audio id="audio-element" src="musicaa.mp3" loop></audio>
+  
+  <button id="play-button">Play</button>
+  <button id="pause-button">Pause</button>
+
+  <script>
+    var audioElement = document.getElementById("audio-element");
+    var playButton = document.getElementById("play-button");
+    var pauseButton = document.getElementById("pause-button");
+
+    playButton.addEventListener("click", function() {
+      audioElement.play();
+    });
+
+    pauseButton.addEventListener("click", function() {
+      audioElement.pause();
+    });
+
+    window.addEventListener("DOMContentLoaded", function() {
+      audioElement.play();
+    });
+  </script>
+
 </body>
 </html>
